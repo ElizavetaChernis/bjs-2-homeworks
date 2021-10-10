@@ -24,9 +24,14 @@ Student.prototype.addMark = function (mark) {
   }
   }
 
-Student.prototype.addMarks = function (...mark) {
-  this.marks = mark;
-}
+  Student.prototype.addMarks = function (...mark) {
+    if (this.marks === undefined) {
+      this.marks = [];
+      this.marks.push(...mark);
+       } else {
+      this.marks.push(...mark);
+    }
+  } 
 
 Student.prototype.getAverage = function () {
   return this.marks.reduce((acc, item) => acc += item) / this.marks.length;
